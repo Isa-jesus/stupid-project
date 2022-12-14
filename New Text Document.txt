@@ -1,0 +1,41 @@
+import pyttsx3
+
+engine = pyttsx3.init()
+
+engine.setProperty('rate', 150)
+engine.setProperty('volume', 0.9)
+
+en_voice_id = 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Speech\Voices\Tokens\TTS_MS_EN-US_DAVID_11.0'
+fen_voice_id = 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Speech\Voices\Tokens\TTS_MS_EN-US_ZIRA_11.0'
+ru_voice_id = 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Speech\Voices\Tokens\TTS_MS_RU-RU_IRINA_11.0'
+
+print("1 - English Male Voice")
+print("2 - English Female Voice")
+print("3 - Russian Female Voice")
+print('Choose the voice - type: 1, 2, 3 ')
+select = int(input())
+
+if select == 1:
+    print("Type the text to voice... ")
+    text = input()
+    engine.setProperty('voice', en_voice_id)
+    engine.say(text)
+elif select == 2:
+    print("Type the text to voice... ")
+    text = input()
+    engine.setProperty('voice', fen_voice_id)
+    engine.say(text)
+elif select == 3:
+    print("Type the text to voice... ")
+    text = input()
+    engine.setProperty('voice', ru_voice_id)
+    engine.say(text)
+else:
+    engine.setProperty('voice', en_voice_id)
+    engine.say('Incorrect Input!')
+
+# voices = engine.getProperty('voices')
+# for voice in voices:
+#     print(voice.id)
+
+engine.runAndWait()
